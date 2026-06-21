@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Eco-Consultor Ambiental | Liquid Glass</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+</head>
+<body>
+    
+    <div class="ambient-background">
+        <div class="blob blob-1"></div>
+        <div class="blob blob-2"></div>
+        <div class="blob blob-3"></div>
+    </div>
+
+    <div class="dashboard-layout">
+        
+        <aside class="glass-panel sidebar" id="history-section">
+            <div class="sidebar-header">
+                <div class="logo-icon">🌿</div>
+                <h2>Eco-Auditorías</h2>
+            </div>
+            <div class="sidebar-content">
+                <h3>Historial Reciente</h3>
+                <div id="history-list" class="history-grid">
+                    <p class="empty-msg">No hay reportes guardados aún.</p>
+                </div>
+            </div>
+        </aside>
+
+        <main class="glass-panel main-workspace" id="app-container">
+            
+            <header class="workspace-header">
+                <h1>Transición a Cero Químicos</h1>
+                <p class="subtitle">Evaluación inteligente de impacto ambiental</p>
+            </header>
+
+            <div class="workspace-content">
+                
+                <section id="step-1" class="fade-in-section">
+                    <div class="glass-card profile-card">
+                        <div class="card-header">
+                            <span class="card-icon">🏢</span>
+                            <h3>Perfil del Establecimiento</h3>
+                        </div>
+                        <select id="profile-select" class="glass-input">
+                            <option value="Hogar">Hogar / Residencial</option>
+                            <option value="Oficina">Oficina Corporativa</option>
+                            <option value="Escuela">Centro Educativo</option>
+                            <option value="Restaurante">Restaurante / Cafetería</option>
+                            <option value="Taller/Industria">Taller / Área Industrial</option>
+                        </select>
+                    </div>
+
+                    <div class="glass-card inventory-card">
+                        <div class="card-header">
+                            <span class="card-icon">🧪</span>
+                            <h3>Inventario Químico y Variables de Uso</h3>
+                        </div>
+                        
+                        <div id="extended-inventory" class="inventory-grid">
+                            
+                            <div class="inventory-item glass-item">
+                                <label class="item-header">
+                                    <input type="checkbox" name="chemical" value="detergente"> 
+                                    <span class="custom-checkbox"></span>
+                                    Detergentes con fosfatos (Lavandería)
+                                </label>
+                                <div class="variables">
+                                    <select name="freq-detergente" class="glass-select">
+                                        <option value="semanal">Uso Semanal</option>
+                                        <option value="diario">Uso Diario</option>
+                                    </select>
+                                    <select name="dirt-detergente" class="glass-select">
+                                        <option value="baja">Suciedad Baja</option>
+                                        <option value="alta">Suciedad Alta</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="inventory-item glass-item">
+                                <label class="item-header">
+                                    <input type="checkbox" name="chemical" value="solvente"> 
+                                    <span class="custom-checkbox"></span>
+                                    Solventes de motores (Mantenimiento)
+                                </label>
+                                <div class="variables">
+                                    <select name="freq-solvente" class="glass-select">
+                                        <option value="mensual">Uso Mensual</option>
+                                        <option value="semanal">Uso Semanal</option>
+                                    </select>
+                                    <select name="dirt-solvente" class="glass-select">
+                                        <option value="media">Suciedad Media</option>
+                                        <option value="alta">Grasa Pesada</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="inventory-item glass-item">
+                                <label class="item-header">
+                                    <input type="checkbox" name="chemical" value="desinfectante_comida"> 
+                                    <span class="custom-checkbox"></span>
+                                    Desinfectantes industriales (Comedor)
+                                </label>
+                                <div class="variables">
+                                    <select name="freq-desinfectante_comida" class="glass-select">
+                                        <option value="diario">Uso Diario</option>
+                                        <option value="turnos">Múltiples Turnos</option>
+                                    </select>
+                                    <select name="dirt-desinfectante_comida" class="glass-select">
+                                        <option value="baja">Mantenimiento Ligero</option>
+                                        <option value="alta">Alta Carga Orgánica</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="inventory-item glass-item">
+                                <label class="item-header">
+                                    <input type="checkbox" name="chemical" value="aerosol_pantallas"> 
+                                    <span class="custom-checkbox"></span>
+                                    Aerosoles para electrónica (Oficinas)
+                                </label>
+                                <div class="variables">
+                                    <select name="freq-aerosol_pantallas" class="glass-select">
+                                        <option value="semanal">Uso Semanal</option>
+                                        <option value="diario">Uso Diario</option>
+                                    </select>
+                                    <select name="dirt-aerosol_pantallas" class="glass-select">
+                                        <option value="baja">Solo Polvo</option>
+                                        <option value="alta">Manchas de Grasa</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="inventory-item glass-item">
+                                <label class="item-header">
+                                    <input type="checkbox" name="chemical" value="acido_banos"> 
+                                    <span class="custom-checkbox"></span>
+                                    Ácidos fuertes / Quitasarro (Baños)
+                                </label>
+                                <div class="variables">
+                                    <select name="freq-acido_banos" class="glass-select">
+                                        <option value="semanal">Uso Semanal</option>
+                                        <option value="diario">Uso Diario</option>
+                                    </select>
+                                    <select name="dirt-acido_banos" class="glass-select">
+                                        <option value="media">Sarro Medio</option>
+                                        <option value="alta">Sarro Incrustado</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <button id="generate-btn" class="glass-btn primary-glass">Generar Guía Operativa <span class="arrow">→</span></button>
+                </section>
+
+                <section id="step-2" class="hidden fade-in-section">
+                    <div class="action-bar glass-card">
+                        <button id="reset-btn" class="glass-btn secondary-glass"><span class="arrow">←</span> Modificar Auditoría</button>
+                        <button id="export-pdf-btn" class="glass-btn primary-glass">📥 Exportar Reporte PDF</button>
+                    </div>
+
+                    <div id="pdf-wrapper" class="glass-card document-card">
+                        <div id="pdf-content" class="report-document">
+                            <div class="report-header">
+                                <div class="watermark">ECO</div>
+                                <h2>Guía de Transición Ecológica</h2>
+                                <p id="report-meta-info"></p>
+                            </div>
+
+                            <div class="dashboard-results">
+                                <div class="column damage-zone">
+                                    <div class="zone-header">
+                                        <span class="icon-warning">⚠️</span>
+                                        <h3>Alertas de Toxicidad</h3>
+                                    </div>
+                                    <ul id="impact-list"></ul>
+                                </div>
+                                
+                                <div class="column green-zone">
+                                    <div class="zone-header">
+                                        <span class="icon-eco">🌿</span>
+                                        <h3>Plan de Sustitución y Aplicación</h3>
+                                    </div>
+                                    <div id="recipe-list"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+            </div>
+        </main>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
